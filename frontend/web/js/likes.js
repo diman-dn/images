@@ -1,27 +1,33 @@
 $(document).ready(function () {
     $('a.button-like').on('click', function (e) {
         e.preventDefault();
-        var params = {
+        let like = $(this);
+        let unlike = $("a.button-unlike[data-id$='" + $(this).attr('data-id') + "']");
+        let likeCount = $("span.likes-count[data-id$='" + $(this).attr('data-id') + "']");
+        let params = {
             'id': $(this).attr('data-id')
         };
         $.post('/post/default/like', params, function (data) {
             if(data.success) {
-                $('.button-like').hide();
-                $('.button-unlike').show();
-                $('.likes-count').text(data.likesCount);
+                like.hide();
+                unlike.show();
+                likeCount.text(data.likesCount);
             }
         });
     });
     $('a.button-unlike').on('click', function (e) {
         e.preventDefault();
-        var params = {
+        let unlike = $(this);
+        let like = $("a.button-like[data-id$='" + $(this).attr('data-id') + "']");
+        let likeCount = $("span.likes-count[data-id$='" + $(this).attr('data-id') + "']");
+        let params = {
             'id': $(this).attr('data-id')
         };
         $.post('/post/default/unlike', params, function (data) {
             if(data.success) {
-                $('.button-unlike').hide();
-                $('.button-like').show();
-                $('.likes-count').text(data.likesCount);
+                unlike.hide();
+                like.show();
+                likeCount.text(data.likesCount);
             }
         });
     });

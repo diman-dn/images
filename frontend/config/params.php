@@ -8,7 +8,13 @@ return [
 
     // Настройки для изображений
     'profilePicture' => [
-        'maxWidth' => 1280,
-        'maxHeight' => 1024,
+        'maxWidth' => 200,
+        'maxHeight' => 200,
     ],
+    'postPicture' => [
+        'maxWidth' => 1024,
+        'maxHeight' => 768,
+    ],
+
+    'feedPostLimit' => 200,
 ];

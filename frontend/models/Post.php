@@ -27,19 +27,6 @@ class Post extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-//    public function rules()
-//    {
-//        return [
-//            [['user_id', 'filename', 'created_at'], 'required'],
-//            [['user_id', 'created_at'], 'integer'],
-//            [['description'], 'string'],
-//            [['filename'], 'string', 'max' => 255],
-//        ];
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

@@ -14,7 +14,7 @@ use dosamigos\fileupload\FileUpload;
 <p><?= HTMLPurifier::process($user->about) ?></p>
 <hr>
 
-<img src="<?= $user->getPicture() ?>" id="profile-picture">
+<img src="<?= $user->getPicture() ?>" id="profile-picture" width="200" height="200">
 
 <?php if($currentUser && $currentUser->equals($user)): ?>
 
@@ -48,9 +48,9 @@ use dosamigos\fileupload\FileUpload;
 <?php else: ?>
 
 <?php if($currentUser && $user->isFollowing($currentUser)): ?>
-<a href="<?= Url::to(['/user/profile/unsubscribe', 'id' => $user->getId()]) ?>" class="btn btn-info">Unsubscribe</a>
+<a href="<?= Url::to(['/user/profile/unsubscribe', 'id' => $user->getId()]) ?>" class="btn btn-info btn-sm">Unsubscribe</a>
 <?php else: ?>
-<a href="<?= Url::to(['/user/profile/subscribe', 'id' => $user->getId()]) ?>" class="btn btn-info">Subscribe</a>
+<a href="<?= Url::to(['/user/profile/subscribe', 'id' => $user->getId()]) ?>" class="btn btn-info btn-sm">Subscribe</a>
 <?php endif; ?>
 <hr>
 <?php endif; ?>
@@ -69,14 +69,25 @@ use dosamigos\fileupload\FileUpload;
 <hr>
 <?php endif; ?>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalSubscriptions">
-    Subscriptions: <?= $user->countSubscriptions() ?>
-</button>
+<!-- User posts -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+<!--/ User posts -->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFollowers">
     Followers: <?= $user->countFollowers() ?>
+</button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalSubscriptions">
+    Subscriptions: <?= $user->countSubscriptions() ?>
 </button>
 
 <!-- Modal subscriptions -->

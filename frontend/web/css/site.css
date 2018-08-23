@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-size: 16px;
 }
 
 .wrap {
@@ -121,4 +122,54 @@ a.desc:after {
 
 .display-none {
     display: none;
+}
+
+#comment {
+    resize: none;
+}
+
+#comments {
+    list-style: none;
+    padding: 0;
+}
+ul#comments > li {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 10px;
+    box-shadow: 1px 1px 1px #ccc;
+    margin: 10px auto;
+}
+
+#comment-error {
+    display: none;
+    background-color: rgba(255,0,39,0.7);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px #ccc;
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+span.reply-to {
+    display: none;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.button-like {
+    color: #000;
+    font-size: 30px;
+}
+.button-like:hover {
+    color: #000;
+}
+.button-unlike {
+    font-size: 30px;
+}
+
+.feed-block {
+    /*border: 1px solid #ccc;*/
+    /*margin: 10px;*/
+    /*padding: 5px;*/
 }

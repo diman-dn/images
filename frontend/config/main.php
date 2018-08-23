@@ -50,10 +50,14 @@ return [
             'rules' => [
                 'profile/<nickname:\w+>' => 'user/profile/view',
                 'post/<id:\d+>' => 'post/default/view',
+                'post/delete/<id:\d+>' => 'post/default/delete'
             ],
         ],
         'storage' => [
             'class' => 'frontend\components\Storage',
+        ],
+        'feedService' => [
+            'class' => 'frontend\components\FeedService',
         ],
     ],
     'params' => $params,

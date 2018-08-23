@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'description') ?>
 
-    <?= Html::submitButton('Create') ?>
+    <?= Html::submitButton('Create', ['class' => 'btn btn-primary']) ?>
 
     <?php ActiveForm::end(); ?>
 
