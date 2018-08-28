@@ -103,4 +103,38 @@ class Post extends \yii\db\ActiveRecord
         $redis = Yii::$app->redis;
         return $redis->sismember("post:{$this->getId()}:likes", $user->getId());
     }
+
+    public function addComment()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->incr("post:{$this->getId()}:comments");
+    }
+
+    public function removeComment()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->decr("post:{$this->getId()}:comments");
+    }
+
+    public function removeLikesAndComments()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        $redis->srem("post:{$this->getId()}:comments");
+        return $redis->srem("post:{$this->getId()}:likes");
+    }
+
+    public function countComments()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->get("post:{$this->getId()}:comments") ?? 0;
+    }
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['post_id' => 'id']);
+    }
 }

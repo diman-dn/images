@@ -17,4 +17,5 @@ return [
     ],
 
     'feedPostLimit' => 200,
+    'profilePostLimit' => 50,
 ];

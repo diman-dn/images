@@ -64,8 +64,21 @@ class DefaultController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(['/user/default/login']);
         }
-        // TODO Удаление поста + комментарии поста
-        $this->goHome();
+        /* @var $currentUser User */
+        $currentUser = Yii::$app->user->identity;
+        // TODO Удаление поста + комментарии поста?
+        $id = intval($id);
+        $post = Post::findOne(['id' => $id]);
+        if($currentUser->id == $post->user_id) {
+            if($post->removeLikesAndComments() && $post->delete() && Comment::deleteAll(['post_id' => $id])) {
+                Yii::$app->session->setFlash('success', 'Post successfully deleted!');
+            } else {
+                Yii::$app->session->setFlash('danger', 'Some error occured! Post is not deleted!');
+            }
+        } else {
+            Yii::$app->session->setFlash('danger', 'You have no permissions for this operation!');
+        }
+        return $this->redirect(['/user/profile/view', 'nickname' => $currentUser->getNickname()]);
     }
 
     public function actionAddComment()
@@ -95,6 +108,7 @@ class DefaultController extends Controller
             $model->attributes = $formData;
 
             if($post && $model->validate() && $model->save()) {
+                $post->addComment();
                 return [
                     'success' => true,
                     'author' => $currentUser['username'],
@@ -124,7 +138,8 @@ class DefaultController extends Controller
         // Comment to remove
         $comment = Comment::findOne(['id' => $id]);
         if($currentUser->id == $comment->user_id || $post->user_id == $currentUser->id) {
-            if(/*$comment->delete()*/ true) {
+            if($comment->delete()) {
+                $post->removeComment();
                 return [
                     'success' => true,
                     'id' => $id,

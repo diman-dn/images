@@ -4,39 +4,6 @@ body {
     font-size: 16px;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
-
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
-.not-set {
-    color: #c55;
-    font-style: italic;
-}
-
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
     position: relative;
@@ -128,17 +95,17 @@ a.desc:after {
     resize: none;
 }
 
-#comments {
-    list-style: none;
-    padding: 0;
-}
-ul#comments > li {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding-left: 10px;
-    box-shadow: 1px 1px 1px #ccc;
-    margin: 10px auto;
-}
+/*#comments {*/
+    /*list-style: none;*/
+    /*padding: 0;*/
+/*}*/
+/*ul#comments > li {*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 10px;*/
+    /*padding-left: 10px;*/
+    /*box-shadow: 1px 1px 1px #ccc;*/
+    /*margin: 10px auto;*/
+/*}*/
 
 #comment-error {
     display: none;
@@ -157,19 +124,24 @@ span.reply-to {
     font-style: italic;
 }
 
-.button-like {
-    color: #000;
+.feed-post-action {
     font-size: 30px;
+    display: flex;
 }
-.button-like:hover {
-    color: #000;
-}
-.button-unlike {
-    font-size: 30px;
+.feed-likes {
+    margin-right: 20px;
 }
 
-.feed-block {
-    /*border: 1px solid #ccc;*/
-    /*margin: 10px;*/
-    /*padding: 5px;*/
-}
+/*.button-like {*/
+    /*color: #000;*/
+/*}*/
+/*.button-like:hover {*/
+    /*color: #000;*/
+/*}*/
+/*.button-unlike {*/
+
+/*}*/
+
+/*.comments-post-feed {*/
+    /*color: #aaa;*/
+/*}*/

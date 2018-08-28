@@ -4,7 +4,6 @@ namespace frontend\modules\user\controllers;
 
 use Yii;
 use frontend\models\User;
-use yii\redis\Connection;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use frontend\modules\user\models\forms\PictureForm;
@@ -19,12 +18,17 @@ class ProfileController extends Controller
         /* @var $currentUser User */
         $currentUser = Yii::$app->user->identity;
 
+        $user = $this->findUser($nickname);
+
         $modelPicture = new PictureForm();
+        $limit = Yii::$app->params['profilePostLimit'];
+        $posts = $user->getPosts($limit);
 
         return $this->render('view', [
-            'user' => $this->findUser($nickname),
+            'user' => $user,
             'currentUser' => $currentUser,
             'modelPicture' => $modelPicture,
+            'posts' => $posts,
         ]);
     }
 
